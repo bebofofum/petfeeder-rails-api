@@ -1,2 +1,2 @@
-# React Redux Pet Feeder API
+# React Redux Pet Feeder API Project
 
