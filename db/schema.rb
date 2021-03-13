@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_215309) do
+ActiveRecord::Schema.define(version: 2021_03_13_233214) do
+
+  create_table "feedings", force: :cascade do |t|
+    t.text "description"
+    t.string "category"
+    t.boolean "completed"
+    t.integer "pet_id", null: false
+    t.integer "owner_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_feedings_on_owner_id"
+    t.index ["pet_id"], name: "index_feedings_on_pet_id"
+  end
+
+  create_table "owners", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
@@ -31,4 +49,6 @@ ActiveRecord::Schema.define(version: 2021_03_13_215309) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "feedings", "owners"
+  add_foreign_key "feedings", "pets"
 end
