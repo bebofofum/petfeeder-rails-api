@@ -26,19 +26,15 @@ ActiveRecord::Schema.define(version: 2021_03_13_233214) do
 
   create_table "owners", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_owners_on_user_id"
   end
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
-    t.string "type"
-    t.integer "user_id", null: false
+    t.string "species"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,6 +51,4 @@ ActiveRecord::Schema.define(version: 2021_03_13_233214) do
 
   add_foreign_key "feedings", "owners"
   add_foreign_key "feedings", "pets"
-  add_foreign_key "owners", "users"
-  add_foreign_key "pets", "users"
 end

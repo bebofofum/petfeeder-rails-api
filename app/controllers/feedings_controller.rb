@@ -8,6 +8,11 @@ class FeedingsController < ApplicationController
     render json: @feedings
   end
 
+  # # GET /feedings/new
+  # def new
+
+  # end
+
   # GET /feedings/1
   def show
     render json: @feeding
@@ -46,6 +51,6 @@ class FeedingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def feeding_params
-      params.require(:feeding).permit(:description, :category, :completed, :pet_id, :owner_id)
+      params.require(:feeding).permit(:description, :category, :completed, :pet_id)
     end
 end
