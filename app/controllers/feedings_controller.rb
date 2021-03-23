@@ -3,15 +3,27 @@ class FeedingsController < ApplicationController
 
   # GET /feedings
   def index
-    @feedings = Feeding.all
+    if params[:pet_id]
+      @feedings = Pet.find_by_id(params[:pet_id]).feedings
+    else
+      @feedings = Feeding.all
+    end
+
+    # @feedings = Feeding.all
 
     render json: @feedings
   end
 
-  # # GET /feedings/new
-  # def new
+  # GET /feedings/new
+  def new
+    @pet = Pet.find_by_id(params[:pet_id])
+    if @pet
+      @feeding = @pet.feedings.build
+    else
+      @feeding = Feeding.new
+    end
 
-  # end
+  end
 
   # GET /feedings/1
   def show

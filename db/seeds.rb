@@ -12,3 +12,5 @@ pet3 = Pet.find_or_create_by(name: "Goblin", species: "Cat")
 
 owner1 = Owner.find_or_create_by(name: "Beep")
 owner2 = Owner.find_or_create_by(name: "Bop")
+
+feeding1 = Feeding.find_or_create_by(description: "worms", category: "evening", completed: true, pet_id: 2, owner_id: 1)
