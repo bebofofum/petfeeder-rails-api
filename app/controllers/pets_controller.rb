@@ -10,7 +10,11 @@ class PetsController < ApplicationController
 
   # GET /pets/1
   def show
-    render json: @pet
+    hash = PetSerializer.new(@pet, include: [:feedings]).serializable_hash
+    render json: {
+      pet: hash[:data][:attributes],
+      feedings: hash[:included].map{ |attr| attr[:attributes] }
+    }
   end
 
   # POST /pets
