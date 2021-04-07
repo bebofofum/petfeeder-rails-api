@@ -63,6 +63,6 @@ class FeedingsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def feeding_params
-      params.require(:feeding).permit(:description, :category, :completed, :pet_id)
+      params.require(:feeding).permit(:description, :category, :completed, :pet_id, :owner_id)
     end
 end
