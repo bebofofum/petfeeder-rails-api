@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'private/test'
   get '/current_user', to: 'current_user#index'
   resources :owners
   resources :feedings
